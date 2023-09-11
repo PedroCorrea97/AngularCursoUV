@@ -1,28 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { AuthRoutingModule } from './auth-routing.module';
-import { LoginComponent } from './login/login.component';
+import { ListadoCursosComponent } from './listado-cursos/listado-cursos.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { CursosRoutingModule } from './cursos-routing.module';
+import { AddEditCursosComponent } from './add-edit-cursos/add-edit-cursos.component';
 
-const components = [LoginComponent]
 
 
 @NgModule({
   declarations: [
-    ...components
+    ListadoCursosComponent,
+    AddEditCursosComponent
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,
-    MaterialModule,
+    CursosRoutingModule,
+    MaterialModule, 
     ReactiveFormsModule,
     SharedModule
-  ],
-  exports:[
-    ...components
   ]
 })
-export class AuthModule { }
+export class CursosModule { }

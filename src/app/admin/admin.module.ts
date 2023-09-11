@@ -23,6 +23,13 @@ const routes: Routes = [
             (m) => m.FormulariosModule
           ),
       },
+      {
+        path: 'cursos',
+        loadChildren: () =>
+          import('../cursos/cursos.module').then(
+            (m) => m.CursosModule
+          ),
+      },
     ],
   },
 ];

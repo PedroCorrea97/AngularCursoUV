@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit{
   private router = inject(Router);
   formulario!: FormGroup;
   hide = true;
+  visible = false;
   controlForm = (propiedad: string) => this.formulario.controls[propiedad];
   
   ngOnInit() { this.formulario = this.fb.group({ username: ['', [Validators.minLength(4), Validators.maxLength(20)]], password: ['', [Validators.minLength(4), Validators.maxLength(20)]] }) }
