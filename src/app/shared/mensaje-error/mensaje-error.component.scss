@@ -1,0 +1,12 @@
+:host{
+    display: flex;
+    background-color: white;
+}
+
+.etMessage{
+    color: red;
+}
+
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar_suface{
+    background-color: white !important;
+}

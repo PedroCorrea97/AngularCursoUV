@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar><mat-icon class="homeSize mr-4" routerLink="/admin"> home </mat-icon>Menu</mat-toolbar>
+    <mat-nav-list class="d-flex flex-column justify-content-center">
+      <a mat-list-item routerLink="/admin/categorias"> <mat-icon> label </mat-icon> Categorias </a>
+      <a mat-list-item routerLink="/admin/reactivos/nota-ventas"> <mat-icon> favorite </mat-icon> Reactivos </a>
+      <a mat-list-item routerLink="/admin/categorias"> <mat-icon> grade </mat-icon> Pruebas </a>
+      <a mat-list-item (click)="logout()" *ngIf="isAutenticated$ | async"> Salir </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>cursos</span>
+    </mat-toolbar>
+    <div class="row d-flex justify-content-center">
+      <div class="col bg-danger ">Columna 1</div>
+      <div class="col bg-success">Columna 2</div>
+    </div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
