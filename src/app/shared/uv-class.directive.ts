@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, OnInit, inject } from '@angular/core';
 
 @Directive({
-  selector: '[uvClass]'
+    selector: '[uvClass]',
+    standalone: true
 })
 export class UvClassDirective implements OnInit {
   private elementRef = inject(ElementRef)

@@ -1,15 +1,22 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Categoria } from 'src/app/models/categoria.model';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { MensajeErrorComponent } from 'src/app/shared/mensaje-error/mensaje-error.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-add-edit-categoria',
-  templateUrl: './add-edit-categoria.component.html',
-  styleUrls: ['./add-edit-categoria.component.scss']
+    selector: 'app-add-edit-categoria',
+    templateUrl: './add-edit-categoria.component.html',
+    styleUrls: ['./add-edit-categoria.component.scss'],
+    standalone: true,
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NgIf, MatButtonModule, MatIconModule, RouterLink]
 })
 export class AddEditCategoriaComponent implements OnInit {
   form!:FormGroup;

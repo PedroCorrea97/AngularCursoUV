@@ -1,7 +1,8 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[uvIf]'
+    selector: '[uvIf]',
+    standalone: true
 })
 export class UvIfDirective {
   _uvIf!:boolean;
