@@ -30,9 +30,9 @@ export class ListadoCursosComponent implements AfterViewInit, OnInit {
    }
 
   deleteCursos(categoria: Categoria){
-    const dialogRef = this.dialog.open(MensajeConfirmacionComponent, { width: '360', data:{ message: '¿Desea eliminar la categoria? ' + categoria.nombre} })
+    const dialogRef = this.dialog.open(MensajeConfirmacionComponent, { width: '360', data:{ message: '¿Desea eliminar el curso ? ' + categoria.nombre} })
     dialogRef.afterClosed().subscribe( resp => { if (resp == 'Si') { this.cursosService.delete(categoria.id).subscribe ( resp => 
-      { this.chargeCat(); this.snakcBar.open(' La categoria fue elimnada con exito ',  '', { duration:3000}); }); } this.cdr.detectChanges(); } )
+      { this.chargeCat(); this.snakcBar.open(' El curso fue elimnado con exito ',  '', { duration:3000}); }); } this.cdr.detectChanges(); } )
   }
 
 }

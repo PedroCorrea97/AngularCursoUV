@@ -17,6 +17,10 @@ export class CategoriasService {
     { params: new HttpParams().set('pageIndex', pageIndex.toString()).set('pageSize', pageSize.toString())}).pipe(catchError(this.handleError))
   }
 
+  getAll():Observable<Categoria[]>  {
+    return this.http.get<Categoria[]>(`${this.apiURL}`+`/Categorias/obtenertodos`, ).pipe(catchError(this.handleError));
+  }
+
   getById(id:number):Observable<Categoria>{ 
     return id > 0 ? this.http.get<Categoria>(`${this.apiURL}/categorias/${id}`).pipe(catchError(this.handleError)) : of({id:0, nombre:''}); }
   

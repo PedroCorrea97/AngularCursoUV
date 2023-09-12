@@ -17,6 +17,8 @@ export class CursosService {
     { params: new HttpParams().set('pageIndex', pageIndex.toString()).set('pageSize', pageSize.toString())}).pipe(catchError(this.handleError))
   }
 
+  
+
   getById(id:number):Observable<Cursos>{ 
   return id > 0 ? this.http.get<Cursos>(`${this.apiURL}/cursos/${id}`).pipe(catchError(this.handleError)) : of({ id: 0, nombre: '', precio: 0, descripcion: '', fechaCreacion: ''}); }
   

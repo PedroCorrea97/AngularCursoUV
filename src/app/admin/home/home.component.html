@@ -4,9 +4,9 @@
     <mat-toolbar><mat-icon class="homeSize mr-4" routerLink="/admin"> home </mat-icon>Menu</mat-toolbar>
     <mat-nav-list class="d-flex flex-column justify-content-center">
       <a mat-list-item routerLink="/admin/categorias"> <mat-icon> label </mat-icon> Categorias </a>
-      <a mat-list-item routerLink="/admin/reactivos/nota-ventas"> <mat-icon> favorite </mat-icon> Reactivos </a>
-      <a mat-list-item routerLink="/admin/cursos/"> <mat-icon> grade </mat-icon> Cursos </a>
-      <a mat-list-item (click)="logout()" *ngIf="isAutenticated$ | async"> Salir </a>
+      <a mat-list-item routerLink="/admin/reactivos/nota-ventas"> <mat-icon> credit_card </mat-icon> Reactivos </a>
+      <a mat-list-item routerLink="/admin/cursos/"> <mat-icon> book </mat-icon> Cursos </a>
+      <a mat-list-item (click)="logout()" *ngIf="isAutenticated$ | async"><mat-icon> logout </mat-icon> Salir </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
