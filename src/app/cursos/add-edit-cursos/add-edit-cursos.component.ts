@@ -1,16 +1,26 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Cursos } from 'src/app/models/cursos.model';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { CursosService } from 'src/app/services/cursos.service';
 import { MensajeErrorComponent } from 'src/app/shared/mensaje-error/mensaje-error.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor, NgIf } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-add-edit-cursos',
-  templateUrl: './add-edit-cursos.component.html',
-  styleUrls: ['./add-edit-cursos.component.scss']
+    selector: 'app-add-edit-cursos',
+    templateUrl: './add-edit-cursos.component.html',
+    styleUrls: ['./add-edit-cursos.component.scss'],
+    standalone: true,
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatSelectModule, NgFor, MatOptionModule, NgIf, MatInputModule, MatDatepickerModule, MatButtonModule, MatIconModule, RouterLink]
 })
 export class AddEditCursosComponent {
   formCursos!:FormGroup;

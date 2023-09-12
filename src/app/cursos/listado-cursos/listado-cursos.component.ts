@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectorRef  } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,11 +7,19 @@ import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacio
 import { Categoria } from 'src/app/models/categoria.model';
 import { CursosService } from 'src/app/services/cursos.service';
 import { CursosDataSurce } from './cursos.data';
+import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-listado-cursos',
-  templateUrl: './listado-cursos.component.html',
-  styleUrls: ['./listado-cursos.component.scss']
+    selector: 'app-listado-cursos',
+    templateUrl: './listado-cursos.component.html',
+    styleUrls: ['./listado-cursos.component.scss'],
+    standalone: true,
+    imports: [MatButtonModule, RouterLink, MatIconModule, MatTableModule, MatTooltipModule, MatPaginatorModule, AsyncPipe, CurrencyPipe, DatePipe]
 })
 export class ListadoCursosComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;

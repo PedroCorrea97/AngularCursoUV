@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MaterialModule } from '../shared/material/material.module';
+
 
 const routes: Routes = [
   {
@@ -35,8 +35,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), MaterialModule],
-  exports: [RouterModule],
+    imports: [CommonModule, RouterModule.forChild(routes), HomeComponent],
+    exports: [RouterModule],
 })
 export class AdminModule {}

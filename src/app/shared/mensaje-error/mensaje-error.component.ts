@@ -1,10 +1,13 @@
 import { Component, OnInit, Inject} from '@angular/core';
-import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DATA, MatSnackBarRef, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-mensaje-error',
-  templateUrl: './mensaje-error.component.html',
-  styleUrls: ['./mensaje-error.component.scss']
+    selector: 'app-mensaje-error',
+    templateUrl: './mensaje-error.component.html',
+    styleUrls: ['./mensaje-error.component.scss'],
+    standalone: true,
+    imports: [MatSnackBarModule, MatButtonModule]
 })
 export class MensajeErrorComponent implements OnInit {
 message!:string;

@@ -1,13 +1,30 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacion/mensaje-confirmacion.component';
+import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf, NgFor } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-nota-venta',
-  templateUrl: './nota-venta.component.html',
-  styleUrls: ['./nota-venta.component.scss'],
+    selector: 'app-nota-venta',
+    templateUrl: './nota-venta.component.html',
+    styleUrls: ['./nota-venta.component.scss'],
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        NgIf,
+        MatButtonModule,
+        MatIconModule,
+        NgFor,
+        RouterLink,
+    ],
 })
 export class NotaVentaComponent implements OnInit {
   private snackBar = inject(MatSnackBar)

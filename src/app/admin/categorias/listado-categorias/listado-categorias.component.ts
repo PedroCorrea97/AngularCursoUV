@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectorRef  } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { CategoriasDataSurce } from './categorias.data-source';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { tap } from 'rxjs';
@@ -7,11 +7,19 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacion/mensaje-confirmacion.component';
 import { Categoria } from 'src/app/models/categoria.model';
+import { AsyncPipe } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-listado-categorias',
-  templateUrl: './listado-categorias.component.html',
-  styleUrls: ['./listado-categorias.component.scss']
+    selector: 'app-listado-categorias',
+    templateUrl: './listado-categorias.component.html',
+    styleUrls: ['./listado-categorias.component.scss'],
+    standalone: true,
+    imports: [MatButtonModule, RouterLink, MatIconModule, MatTableModule, MatTooltipModule, MatPaginatorModule, AsyncPipe]
 })
 export class ListadoCategoriasComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
