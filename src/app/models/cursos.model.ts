@@ -4,5 +4,4 @@ export interface Cursos {
     precio: number;
     descripcion: string;
     fechaCreacion: string;
-    categoriaID: number;
 }

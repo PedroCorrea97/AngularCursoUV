@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <form [formGroup]="form">
+            <form [formGroup]="formCursos">
                 <div class="row">
                     <div class="col-lg-12">
                         <mat-form-field class="w-100">
@@ -16,24 +16,60 @@
                         </mat-form-field>
 
                         <ng-container *ngIf="(nombre?.dirty || nombre?.touched) && nombre?.errors">
-                            <mat-error *ngIf="nombre?.errors?.['required']">El nombre de la categoría es requerido.
-                            </mat-error>
+                            <mat-error *ngIf="nombre?.errors?.['required']">El nombre del curso es requerido. </mat-error>
                             <mat-error *ngIf="nombre?.errors?.['minLength']">
-                                La categoría debe contener al menos 5 caracteres.
+                                El curso debe contener al menos 10 caracteres.
                             </mat-error>
                             <mat-error *ngIf="nombre?.errors?.['maxLength']">
-                                La categoría no debe superar los 256 caracteres.
+                                El curso no debe superar los 30 caracteres.
                             </mat-error>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <mat-form-field class="w-100">
+                            <mat-label>Precio</mat-label>
+                            <span matPrefix>$ &nbsp;</span>
+                            <input matInput type="number" formControlName="precio" />
+                        </mat-form-field>
+                        <ng-container *ngIf="(precio?.dirty || precio?.touched) && precio?.errors">
+                            <mat-error *ngIf="precio?.errors?.['required']">El precio del curso es requerido. </mat-error>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <mat-form-field class="w-100">
+                            <mat-label>Descripción del Curso</mat-label>
+                            <input matInput formControlName="descripcion" />
+                        </mat-form-field>
+                        <ng-container *ngIf="(descripcion?.dirty || descripcion?.touched) && descripcion?.errors">
+                            <mat-error *ngIf="descripcion?.errors?.['required']">La descripción del curso es requerido. </mat-error>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <mat-form-field class="w-100">
+                            <mat-label>Fecha del curso</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="fechaCreacion" />
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <ng-container *ngIf="(fechaCreacion?.dirty || fechaCreacion?.touched) && fechaCreacion?.errors">
+                            <mat-error *ngIf="fechaCreacion?.errors?.['required']">La fecha del curso es requerido. </mat-error>
                         </ng-container>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <button mat-raised-button color="primary" type="button" class="me-5" (click)="AddCategoria()">
+                        <button mat-raised-button color="primary" type="button" class="me-5" (click)="AddCurso()">
                             Guardar <mat-icon>save</mat-icon>
                         </button>
-                        <button mat-raised-button color="secondary" [routerLink]="['/admin/categorias']" type="button">
+                        <button mat-raised-button color="secondary" [routerLink]="['/admin/cursos']" type="button">
                             Cancelar <mat-icon>close</mat-icon>
                         </button>
                     </div>

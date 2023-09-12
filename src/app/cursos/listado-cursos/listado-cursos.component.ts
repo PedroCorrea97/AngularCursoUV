@@ -19,7 +19,7 @@ export class ListadoCursosComponent implements AfterViewInit, OnInit {
   pageRegister = 8;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'nombre', 'precio', 'descripción', 'Fecha Creación', 'Categoria ID', 'acciones'];
+  displayedColumns = ['id', 'nombre', 'precio', 'descripción', 'Fecha Creación', 'acciones'];
   constructor( private cursosService: CursosService, private dialog: MatDialog, private snakcBar: MatSnackBar, private cdr: ChangeDetectorRef ) { this.dataSource =  new CursosDataSurce(cursosService) }
 
   ngAfterViewInit() { this.paginator.page.pipe(tap(()=>{ this.dataSource.getCursos(this.paginator.pageIndex + 1, this.paginator.pageSize) })).subscribe(); }

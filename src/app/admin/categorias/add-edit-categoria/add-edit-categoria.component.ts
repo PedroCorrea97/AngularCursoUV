@@ -28,7 +28,7 @@ export class AddEditCategoriaComponent implements OnInit {
       this.form = this.formbuilder.group(
         { nombre: ['', [ Validators.required, Validators.minLength(5), Validators.maxLength(250) ]]}
         );
-        this.id = this.aRoute.snapshot.params[this.idParam] ? +this.aRoute.snapshot.params[this.idParam] : 0;
+        this.id = this.aRoute.snapshot.params[this.idParam] ? + this.aRoute.snapshot.params[this.idParam] : 0;
         this.servicioCategorias.getById(this.id).subscribe( resp => { this.form.patchValue(resp); console.log(resp);
          })
     }

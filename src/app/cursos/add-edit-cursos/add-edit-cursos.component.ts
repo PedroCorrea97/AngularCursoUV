@@ -12,10 +12,10 @@ import { MensajeErrorComponent } from 'src/app/shared/mensaje-error/mensaje-erro
   styleUrls: ['./add-edit-cursos.component.scss']
 })
 export class AddEditCursosComponent {
-  form!:FormGroup;
+  formCursos!:FormGroup;
   id = 0;
   idParam: string = 'id';
-  controlForm = (propiedad: string) => this.form.controls[propiedad];
+  controlForm = (propiedad: string) => this.formCursos.controls[propiedad];
 
   constructor( private servicioCursos : CursosService, 
     private formbuilder: FormBuilder,
@@ -24,37 +24,45 @@ export class AddEditCursosComponent {
     private snackBar: MatSnackBar
     ) { }
 
+    get nombre() { return this.controlForm('nombre') }
+    get precio() { return this.controlForm('precio') }
+    get descripcion() { return this.controlForm('descripcion') }
+    get fechaCreacion() { return this.controlForm('fechaCreacion') }
+
     ngOnInit() {
-      this.form = this.formbuilder.group(
-        { nombre: ['', [ Validators.required, Validators.minLength(5), Validators.maxLength(250) ]]}
-        );
+      this.formCursos = this.formbuilder.group(
+        { nombre: ['', [ Validators.required, Validators.minLength(10), Validators.maxLength(30) ]],
+          precio: ['', [ Validators.required ]],
+          descripcion: ['', [ Validators.required ]],
+          fechaCreacion: ['', [ Validators.required ]],
+      
+      });
         this.id = this.aRoute.snapshot.params[this.idParam] ? +this.aRoute.snapshot.params[this.idParam] : 0;
-        this.servicioCursos.getById(this.id).subscribe( resp => { this.form.patchValue(resp);
+        this.servicioCursos.getById(this.id).subscribe( resp => { this.formCursos.patchValue(resp);
          })
     }
 
-    get nombre() { return this.controlForm('nombre') }
-
     AddCurso(){
-      if( this.form.valid ){
+      if( this.formCursos.valid ){
+      console.log(this.formCursos.value);
         const payload:Cursos = {
           id: this.id,
-          ... this.form.value
+          ... this.formCursos.value
         };
         if(this.id > 0 ){
           this.servicioCursos.update(this.id, payload).subscribe( { next: (resp) => {
-            this.snackBar.open('El cursos a sido editada.', '',{
+            this.snackBar.open('El curso a sido editada.', '',{
               duration: 3500 });
               this.router.navigate(['admin/cursos']);
           }, error: ( err ) => { this.snackBar.openFromComponent(MensajeErrorComponent , { duration:3000, data: {mensaje:err.message} }) }})
         }
         else{
           this.servicioCursos.addCurso(payload).subscribe( { next: (resp) => { 
-            this.snackBar.open('El curso a sido agregada.', '', {
+            this.snackBar.open('El curso a sido agregado.', '', {
               duration: 3500 });
               this.router.navigate(['admin/curso']); }, error: ( err ) => { this.snackBar.openFromComponent(MensajeErrorComponent , { duration:3000, data: {mensaje:err.message} }) } } );
         }
-      }else {this.form.markAllAsTouched()}
+      }else {this.formCursos.markAllAsTouched()}
     }
 
 }
