@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container dark-theme" [class.dark-theme]="isDarkTheme" [dir]="direction">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar><mat-icon class="homeSize mr-4" routerLink="/admin"> home </mat-icon>Menu</mat-toolbar>
@@ -6,7 +6,7 @@
       <a mat-list-item routerLink="/admin/categorias"> <mat-icon> label </mat-icon> Categorias </a>
       <a mat-list-item routerLink="/admin/reactivos/nota-ventas"> <mat-icon> credit_card </mat-icon> Reactivos </a>
       <a mat-list-item routerLink="/admin/cursos/"> <mat-icon> book </mat-icon> Cursos </a>
-      <a mat-list-item (click)="logout()" *ngIf="isAutenticated$ | async"><mat-icon> logout </mat-icon> Salir </a>
+      <a mat-list-item (click)="logout()" *ngIf="isAutenticated$ | async"><mat-icon class="icorotate"> logout </mat-icon> Salir </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -16,6 +16,12 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>cursos</span>
+      <span class="flex-spacer"></span>
+      <button mat-button [mat-menu-trigger-for]="menu"> <mat-icon> more_vert </mat-icon> </button>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item (click)="changeTheme()"> Cambiar Tema </button>
+        <button mat-menu-item (click)="changeDirection()"> Cambiar Direccion </button>
+      </mat-menu>
     </mat-toolbar>
     <div class="row d-flex justify-content-center">
       <div class="col bg-danger ">Columna 1</div>

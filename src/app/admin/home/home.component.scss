@@ -21,5 +21,9 @@
 }
 
 .icorotate {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
+}
+
+.flex-spacer{
+  flex-grow: 1;
 }

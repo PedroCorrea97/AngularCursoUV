@@ -1,5 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 
+@include mat.core();
+
+$uv-app-primary: mat.define-palette(mat.$indigo-palette, 500);
+$uv-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// The "warn" palette is optional and defaults to red if not specified.
+$uv-app-warn: mat.define-palette(mat.$red-palette);
+
+$uv-app-theme: mat.define-light-theme($uv-app-primary, $uv-app-accent, $uv-app-warn);
+@include mat.all-component-themes($uv-app-theme);
+
+.dark-theme{
+    $primary-dark: mat.define-palette(mat.$pink-palette,700);
+    $accent-dark: mat.define-palette(mat.$green-palette);
+    $warn-dark: mat.define-palette(mat.$red-palette);
+
+    $theme-dark: mat.define-dark-theme($primary-dark, $accent-dark, $warn-dark);
+    @include mat.all-component-themes($theme-dark);
+}
+
+
+
+
+
+
+
+/* You can add global styles to this file, and also import other style files */
 html,
 body {
     height: 100%;
@@ -12,7 +38,6 @@ body {
 
 // Custom.scss
 // Option B: Include parts of Bootstrap
-
 @import "styles/variables";
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
