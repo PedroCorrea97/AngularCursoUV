@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
-import { MatOptionModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { NgFor, NgIf } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,7 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     templateUrl: './add-edit-cursos.component.html',
     styleUrls: ['./add-edit-cursos.component.scss'],
     standalone: true,
-    imports: [ReactiveFormsModule, MatFormFieldModule, MatSelectModule, NgFor, MatOptionModule, NgIf, MatInputModule, MatDatepickerModule, MatButtonModule, MatIconModule, RouterLink]
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatSelectModule, NgFor, MatOptionModule, NgIf, MatInputModule, MatDatepickerModule, MatButtonModule, MatIconModule, RouterLink, MatNativeDateModule]
 })
 export class AddEditCursosComponent {
   formCursos!:FormGroup;
